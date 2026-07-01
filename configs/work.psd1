@@ -4,7 +4,7 @@
         # --- Core Dev, Version Control & API Tools ---
         "Git.Git",
         "GitHub.cli",
-        "extrawurst.LazyGit",
+        "JesseDuffield.lazygit",
         "Bruno.Bruno",
 
         # --- IDEs, Text Editors & AI Assistance ---
@@ -19,9 +19,9 @@
         "LLVM.LLVM",
         "OpenJS.NodeJS",
         "Python.Python.3.14",
-        "NSA.Ghidra",
+        # "NSA.Ghidra",
         "x64dbg.x64dbg",
-        "mh-nexus.HxD",
+        "MHNexus.HxD",
         "Rufus.Rufus",
         "DBBrowserForSQLite.DBBrowserForSQLite",
         
@@ -29,7 +29,7 @@
         "Microsoft.WindowsTerminal",
         "JanDeDobbeleer.OhMyPosh",
         "DEVCOM.JetBrainsMonoNerdFont",
-        "fastfetch-cli.fastfetch",
+        "Fastfetch-cli.Fastfetch",
         "eza-community.eza",
         "junegunn.fzf",
         "sharkdp.fd",
@@ -37,6 +37,7 @@
         "BurntSushi.ripgrep.MSVC",
         "Amazon.AWSCLI",
         "Microsoft.AzureCLI",
+        "cURL.cURL",
 
         # --- Containers & Networking ---
         "Docker.DockerDesktop",
@@ -47,7 +48,7 @@
         "Microsoft.Sysinternals.Suite",
         "WinsiderSS.SystemInformer",
         "WerWolv.ImHex",
-        "GNU.GnuPG",
+        "GnuPG.Gpg4win",
 
         # --- System Utilities, Desktop Env & Package Management ---
         "Microsoft.PowerToys",
@@ -69,7 +70,8 @@
         "Inkscape.Inkscape",
         "MiKTeX.MiKTeX",
         "VideoLAN.VLC",
-        "Microsoft.Office"
+        "Microsoft.Office",
+        "mpv-player.mpv-CI.MSVC"
     )
 
     Features    = @(
@@ -103,6 +105,7 @@
         EnableLongPaths                 = $true
         DisableStickyKeys               = $true
         PreventSleepOnPower             = $true
+        EnableVerboseLogon              = $true
     }
 
     Commands   = @(

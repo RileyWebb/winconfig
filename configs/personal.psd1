@@ -4,7 +4,7 @@
         # --- Core Dev, Version Control & API Tools ---
         "Git.Git",
         "GitHub.cli",
-        "extrawurst.LazyGit",
+        "JesseDuffield.lazygit",
         "Bruno.Bruno",
 
         # --- IDEs, Text Editors & AI Assistance ---
@@ -20,10 +20,10 @@
         "OpenJS.NodeJS",
         "Python.Python.3.14",
         "BrechtSanders.WinLibs.POSIX.UCRT",
-        "ccache.ccache",
-        "NSA.Ghidra",
+        "Ccache.Ccache",
+        # "NSA.Ghidra",
         "x64dbg.x64dbg",
-        "mh-nexus.HxD",
+        "MHNexus.HxD",
         "Rufus.Rufus",
         "DBBrowserForSQLite.DBBrowserForSQLite",
         
@@ -31,7 +31,7 @@
         "Microsoft.WindowsTerminal",
         "JanDeDobbeleer.OhMyPosh",
         "DEVCOM.JetBrainsMonoNerdFont",
-        "fastfetch-cli.fastfetch",
+        "Fastfetch-cli.Fastfetch",
         "eza-community.eza",
         "junegunn.fzf",
         "sharkdp.fd",
@@ -39,6 +39,7 @@
         "BurntSushi.ripgrep.MSVC",
         "Amazon.AWSCLI",
         "Microsoft.AzureCLI",
+        "cURL.cURL",
 
         # --- Containers & Networking ---
         "Docker.DockerDesktop",
@@ -49,7 +50,7 @@
         "Microsoft.Sysinternals.Suite",
         "WinsiderSS.SystemInformer",
         "WerWolv.ImHex",
-        "GNU.GnuPG",
+        "GnuPG.Gpg4win",
 
         # --- System Utilities, Desktop Env & Package Management ---
         "Microsoft.PowerToys",
@@ -75,7 +76,10 @@
         # --- Social, Media & Gaming ---
         "Valve.Steam",
         "Discord.Discord",
-        "VideoLAN.VLC"
+        "Spicetify.Spicetify",
+        "Spotify.Spotify",
+        "VideoLAN.VLC",
+        "mpv-player.mpv-CI.MSVC"
     )
 
     Features    = @(
@@ -108,6 +112,7 @@
         EnableLongPaths                 = $true
         DisableStickyKeys               = $true
         PreventSleepOnPower             = $true
+        EnableVerboseLogon              = $true
     }
 
     Commands   = @(
@@ -116,5 +121,18 @@
         "Install-Module z -Scope CurrentUser",
         "Install-Module PSFzf -Scope CurrentUser",
         "Install-Module CompletionPredictor -Scope CurrentUser"
+    )
+
+    VSCodeExtensions = @(
+        "ms-vscode.cpptools",                  # C/C++ IntelliSense & Debugging
+        "ms-vscode.cpp-devtools",              # CMake/C++ Build tools
+        "ms-toolsai.jupyter",                  # Jupyter Notebook support
+        "ms-toolsai.jupyter-keymap",           # Jupyter keybindings
+        "twxs.cmake",                          # CMake language support
+        "ms-python.python",                    # Python language support
+        "sumneko.lua",                         # Lua development
+        "catppuccin.catppuccin-vsc",
+        "emmanuelbeziat.vscode-great-icons",
+        "xaver.clang-format"
     )
 }

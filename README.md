@@ -5,9 +5,13 @@ A modular, zero-touch Windows post-flash script framework. It uses a core PowerS
 ## Structure
 
 ```text
-├── setup.ps1              # Setup engine
-├── personal.psd1          # My goto personal configuration for windows
-├── work.psd1              # My work configuration
+├── setup.ps1                   # Setup engine
+├── configs
+    ├── personal.psd1           # My goto personal configuration for windows
+    ├── work.psd1               # My work configuration
+├── tests
+    ├── test-packages.ps1       # Package existance tester
+    ├── test-vscextensions.psd1 # My work configuration
 ```
 
 ## How to Run

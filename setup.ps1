@@ -60,7 +60,7 @@ if ([string]::IsNullOrEmpty($ConfigFile)) {
 Write-Host "`n[+] Loading: $ConfigFile" -ForegroundColor Green
 $Config = Import-PowerShellDataFile $ConfigFile
 
-$ProfileLabel = $Config.ProfileName ? $Config.ProfileName : (Split-Path $ConfigFile -Leaf)
+$ProfileLabel = if ($Config.ProfileName) { $Config.ProfileName } else { Split-Path $ConfigFile -Leaf }
 Write-Host "Running configuration for: $ProfileLabel" -ForegroundColor Cyan
 Write-Host "-----------------------------------------"
 
@@ -261,8 +261,47 @@ if ($Config.Tweaks) {
         powercfg /change monitor-timeout-ac 15
     }
     
+    # Displays detailed status messages during boot, logon, logoff, and shutdown
+    if ($Tweaks.EnableVerboseLogon) {
+        Write-Host " -> Enabling Verbose Logon Status Messages..." -ForegroundColor White
+        $SystemPolicyPath = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System"
+        
+        if (-not (Test-Path $SystemPolicyPath)) { 
+            New-Item -Path $SystemPolicyPath -Force | Out-Null 
+        }
+        
+        Set-ItemProperty -Path $SystemPolicyPath -Name "VerboseStatus" -Value 1 -Type DWord -Force | Out-Null
+    }
+
     # Restart Explorer to apply UI tweaks immediately
     Stop-Process -Name explorer -Force
+}
+
+# 8. Install Visual Studio Code Extensions
+if ($Config.VSCodeExtensions) {
+    Write-Host "`n[*] Deploying VSCode Extensions..." -ForegroundColor Yellow
+    
+    # Force refresh env path to discover the fresh WinGet VSCode installation path
+    $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
+    
+    # Locate code binary or fall back to standard local paths if environment registry hasn't broadcasted
+    $CodeBin = Get-Command "code" -ErrorAction SilentlyContinue | Select-Object -ExpandProperty Source
+    if (-not $CodeBin) {
+        $UserPath   = "$env:LocalAppData\Programs\Microsoft VS Code\bin\code.cmd"
+        $SystemPath = "$env:ProgramFiles\Microsoft VS Code\bin\code.cmd"
+        if (Test-Path $UserPath) { $CodeBin = $UserPath }
+        elseif (Test-Path $SystemPath) { $CodeBin = $SystemPath }
+    }
+
+    if ($CodeBin) {
+        foreach ($Extension in $Config.VSCodeExtensions) {
+            Write-Host " -> Initializing: $Extension" -ForegroundColor White
+            # Run the installer command natively via invocation operator
+            & $CodeBin --install-extension $Extension --force | Out-Null
+        }
+    } else {
+        Write-Warning "VSCode CLI installation endpoint ('code') not found. Skipping array targets."
+    }
 }
 
 Write-Host "`n[+] Configuration Complete for $ProfileLabel!" -ForegroundColor Green
