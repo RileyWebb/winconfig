@@ -1,0 +1,120 @@
+@{
+    ProfileName = "Personal Desktop"
+    WingetApps  = @(
+        # --- Core Dev, Version Control & API Tools ---
+        "Git.Git",
+        "GitHub.cli",
+        "extrawurst.LazyGit",
+        "Bruno.Bruno",
+
+        # --- IDEs, Text Editors & AI Assistance ---
+        "Microsoft.VisualStudioCode",
+        "Neovim.Neovim",
+        "Notepad++.Notepad++",
+        "Anthropic.ClaudeCode",
+
+        # --- Toolchains, Build Systems & Runtimes ---
+        "Kitware.CMake",
+        "Ninja-build.Ninja",
+        "LLVM.LLVM",
+        "OpenJS.NodeJS",
+        "Python.Python.3.14",
+        "BrechtSanders.WinLibs.POSIX.UCRT",
+        "ccache.ccache",
+        "NSA.Ghidra",
+        "x64dbg.x64dbg",
+        "mh-nexus.HxD",
+        "Rufus.Rufus",
+        "DBBrowserForSQLite.DBBrowserForSQLite",
+        
+        # --- Terminal Environment & Modern CLI Utilities ---
+        "Microsoft.WindowsTerminal",
+        "JanDeDobbeleer.OhMyPosh",
+        "DEVCOM.JetBrainsMonoNerdFont",
+        "fastfetch-cli.fastfetch",
+        "eza-community.eza",
+        "junegunn.fzf",
+        "sharkdp.fd",
+        "ajeetdsouza.zoxide",
+        "BurntSushi.ripgrep.MSVC",
+        "Amazon.AWSCLI",
+        "Microsoft.AzureCLI",
+
+        # --- Containers & Networking ---
+        "Docker.DockerDesktop",
+        "WinSCP.WinSCP",
+        "Insecure.Nmap",
+
+        # --- Advanced System Internals & Security Diagnostics ---
+        "Microsoft.Sysinternals.Suite",
+        "WinsiderSS.SystemInformer",
+        "WerWolv.ImHex",
+        "GNU.GnuPG",
+
+        # --- System Utilities, Desktop Env & Package Management ---
+        "Microsoft.PowerToys",
+        "Devolutions.UniGetUI",
+        "voidtools.Everything",
+        "WinDirStat.WinDirStat",
+        "ozone10.7zip.Dark",
+        "CharlesMilette.TranslucentTB",
+        "Bitwarden.Bitwarden",
+        "FilesCommunity.Files",
+        "Proton.ProtonVPN",
+
+        # --- Web Browsers ---
+        "Mozilla.Firefox.DeveloperEdition",
+        "Google.Chrome.Dev",
+
+        # --- Creative Layout, 3D & Document Processing ---
+        "BlenderFoundation.Blender",
+        "dotPDN.PaintDotNet",
+        "Inkscape.Inkscape",
+        "MiKTeX.MiKTeX",
+
+        # --- Social, Media & Gaming ---
+        "Valve.Steam",
+        "Discord.Discord",
+        "VideoLAN.VLC"
+    )
+
+    Features    = @(
+        "VirtualMachinePlatform", 
+        "Microsoft-Windows-Subsystem-Linux",
+        "Containers-DisposableClientVM"
+    )
+
+    Tweaks      = @{
+        # UI & Explorer Layout
+        ShowHiddenFiles                 = $true
+        TaskbarAlignLeft                = $true
+        EnableDarkMode                  = $true
+        ExplorerOpenToThisPC            = $true
+        ClassicContextMenu              = $true
+        EnableCommandPromptContextMenu  = $true
+        InstantMenus                    = $true
+        TaskbarEndTask                  = $true
+        
+        # Privacy & Context Cleanups
+        DisableBingSearch               = $true
+        DisableRecentFiles              = $true
+        DisableWidgets                  = $true
+        DisableAdvertisingID            = $true
+        DisableTailoredExperiences      = $true
+        DisableSuggestedContent         = $true
+        
+        # Developer Performance & Quality of Life
+        EnableDeveloperMode             = $true
+        EnableLongPaths                 = $true
+        DisableStickyKeys               = $true
+        PreventSleepOnPower             = $true
+    }
+
+    Commands   = @(
+        "Install-Module PSReadLine -Scope CurrentUser",
+        "Install-Module Terminal-Icons -Scope CurrentUser",
+        "Install-Module z -Scope CurrentUser",
+        "Install-Module PSFzf -Scope CurrentUser",
+        "Install-Module CompletionPredictor -Scope CurrentUser"
+    )
+}
