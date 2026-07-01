@@ -165,10 +165,9 @@ if ($Config.Tweaks) {
 
     # Disable Widgets
     if ($Tweaks.DisableWidgets) {
-        Write-Host " -> Disabling Widgets"
-        Set-ItemProperty `
-            "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" `
-            TaskbarDa 0
+        Write-Host " -> Disabling Widgets..." -ForegroundColor White
+        $AdvancedPath = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced"
+        Set-ItemProperty -Path $AdvancedPath -Name "TaskbarDa" -Value 0 -Force -ErrorAction SilentlyContinue
     }
 
     # Restore Classic Context Menu
@@ -244,7 +243,7 @@ if ($Config.Tweaks) {
     # Allows you to kill frozen binaries instantly from the taskbar without opening Task Manager/System Informer.
     if ($Tweaks.TaskbarEndTask) {
         Write-Host " -> Enabling Taskbar 'End Task' option..." -ForegroundColor White
-        Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\DeveloperSettings" -Name "TaskbarEndTask" -Value 1 -Force | Out-Null
+        Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\TaskbarDeveloperSettings" -Name "TaskbarEndTask" -Value 1 -Force | Out-Null
     }
 
     # Prevents the intrusive accessibility dialog box when smashing the Shift key during compilation shortcuts or gaming.
