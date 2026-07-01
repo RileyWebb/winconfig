@@ -94,7 +94,7 @@
         TaskbarAlignLeft                = $true
         EnableDarkMode                  = $true
         ExplorerOpenToThisPC            = $true
-        ClassicContextMenu              = $true
+        # ClassicContextMenu              = $true
         EnableCommandPromptContextMenu  = $true
         InstantMenus                    = $true
         TaskbarEndTask                  = $true
